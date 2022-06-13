@@ -16,4 +16,3 @@
     name: vivaldi-stable
     update_cache: yes
     state: present
-
