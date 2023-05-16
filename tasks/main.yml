@@ -32,7 +32,7 @@
 - name: Set Vivaldi default application
   ansible.builtin.lineinfile:
     path: /usr/share/applications/mimeapps.list
-    insertbefore: "[Added Associations]"
+    insertbefore: "^[Added Associations]$"
     line: "{{ item.key }}={{ item.value }}"
     state: present
     firstmatch: true
@@ -41,7 +41,7 @@
 - name: Set Vivaldi added associations
   ansible.builtin.lineinfile:
     path: /usr/share/applications/mimeapps.list
-    insertafter: "[Added Associations]"
+    insertafter: "^[Added Associations]$"
     line: "{{ item.key }}={{ item.value }}"
     state: present
     firstmatch: true
