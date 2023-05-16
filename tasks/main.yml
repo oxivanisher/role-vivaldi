@@ -1,5 +1,4 @@
 ---
-
 - name: Add the Vivaldi APT key
   ansible.builtin.apt_key:
     url: https://repo.vivaldi.com/stable/linux_signing_key.pub
@@ -16,3 +15,10 @@
     name: vivaldi-stable
     update_cache: true
     state: present
+
+- name: Set Vivaldi as default browser
+  ansible.builtin.lineinfile:
+    path: /usr/share/applications/mimeapps.list
+    insertafter: "[Default Applications]"
+    line: "{{ item.key }}={{ item.value }}"
+  loop: "{{ vivaldi_mimetypes | dict2items }}"
