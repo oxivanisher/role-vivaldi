@@ -19,17 +19,28 @@
 - name: Configure defaults file
   ansible.builtin.lineinfile:
     path: /usr/share/applications/mimeapps.list
-    line: "[Default Applications]"
+    line: "{{ item }}"
     state: present
     create: true
     mode: "0644"
     owner: root
     group: root
+  loop:
+    - "[Default Applications]"
+    - "[Added Associations]"
 
 - name: Set Vivaldi as default browser
   ansible.builtin.lineinfile:
     path: /usr/share/applications/mimeapps.list
     insertafter: "[Default Applications]"
+    line: "{{ item.key }}={{ item.value }}"
+    state: present
+  loop: "{{ vivaldi_mimetypes | dict2items }}"
+
+- name: Set Vivaldi as default browser
+  ansible.builtin.lineinfile:
+    path: /usr/share/applications/mimeapps.list
+    insertafter: "[Added Associations]"
     line: "{{ item.key }}={{ item.value }}"
     state: present
   loop: "{{ vivaldi_mimetypes | dict2items }}"
