@@ -1,7 +1,7 @@
 ---
 vivaldi_mimetypes:
-  text/html: vivaldi-stable.desktop
-  x-scheme-handler/http: vivaldi-stable.desktop
-  x-scheme-handler/https: vivaldi-stable.desktop
-  x-scheme-handler/about: vivaldi-stable.desktop
-  x-scheme-handler/unknown: vivaldi-stable.desktop
+  - text/html
+  - x-scheme-handler/http
+  - x-scheme-handler/https
+  - x-scheme-handler/about
+  - x-scheme-handler/unknown
