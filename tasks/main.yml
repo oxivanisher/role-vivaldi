@@ -36,7 +36,7 @@
     line: "{{ item.key }}=vivaldi-stable.desktop"
     state: present
     firstmatch: true
-  loop: "{{ vivaldi_mimetypes | dict2items }}"
+  loop: "{{ vivaldi_mimetypes | sort }}"
 
 - name: Set Vivaldi added associations
   ansible.builtin.lineinfile:
@@ -45,4 +45,4 @@
     line: "{{ item.key }}=vivaldi-stable.desktop;"
     state: present
     firstmatch: true
-  loop: "{{ vivaldi_mimetypes | dict2items }}"
+  loop: "{{ vivaldi_mimetypes | sort }}"
