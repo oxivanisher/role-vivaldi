@@ -35,6 +35,7 @@
     insertbefore: "[Added Associations]"
     line: "{{ item.key }}={{ item.value }}"
     state: present
+    firstmatch: true
   loop: "{{ vivaldi_mimetypes | dict2items }}"
 
 - name: Set Vivaldi added associations
@@ -43,4 +44,5 @@
     insertafter: "[Added Associations]"
     line: "{{ item.key }}={{ item.value }}"
     state: present
+    firstmatch: true
   loop: "{{ vivaldi_mimetypes | dict2items }}"
