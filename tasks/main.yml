@@ -29,7 +29,7 @@
     - "[Default Applications]"
     - "[Added Associations]"
 
-- name: Set Vivaldi as default browser
+- name: Set Vivaldi default application
   ansible.builtin.lineinfile:
     path: /usr/share/applications/mimeapps.list
     insertbefore: "[Added Associations]"
@@ -37,7 +37,7 @@
     state: present
   loop: "{{ vivaldi_mimetypes | dict2items }}"
 
-- name: Set Vivaldi as default browser
+- name: Set Vivaldi added associations
   ansible.builtin.lineinfile:
     path: /usr/share/applications/mimeapps.list
     insertafter: "[Added Associations]"
