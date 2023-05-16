@@ -33,7 +33,7 @@
   ansible.builtin.lineinfile:
     path: /usr/share/applications/mimeapps.list
     insertbefore: "Added Associations"
-    line: "{{ item.key }}=vivaldi-stable.desktop"
+    line: "{{ item }}=vivaldi-stable.desktop"
     state: present
     firstmatch: true
   loop: "{{ vivaldi_mimetypes | sort }}"
@@ -42,7 +42,7 @@
   ansible.builtin.lineinfile:
     path: /usr/share/applications/mimeapps.list
     insertafter: "Added Associations"
-    line: "{{ item.key }}=vivaldi-stable.desktop;"
+    line: "{{ item }}=vivaldi-stable.desktop;"
     state: present
     firstmatch: true
   loop: "{{ vivaldi_mimetypes | sort }}"
