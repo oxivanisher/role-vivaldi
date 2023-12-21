@@ -9,6 +9,7 @@
     name: vivaldi
     types: [deb]
     uris: "https://repo.vivaldi.com/stable/deb/"
+    architectures: [amd64]
     components: [main]
     suites: [stable]
     signed_by: https://repo.vivaldi.com/stable/linux_signing_key.pub
