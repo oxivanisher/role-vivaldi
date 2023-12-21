@@ -1,9 +1,4 @@
 ---
-- name: Remove legacy apt file
-  ansible.builtin.file:
-    path: /etc/apt/sources.list.d/vivaldi.list
-    state: absent
-
 - name: Add Vivaldi repo using key from URL
   ansible.builtin.deb822_repository:
     name: vivaldi
