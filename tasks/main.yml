@@ -1,14 +1,19 @@
 ---
-- name: Add the Vivaldi APT key
-  ansible.builtin.apt_key:
-    url: https://repo.vivaldi.com/stable/linux_signing_key.pub
-    state: present
+- name: Remove legacy apt file
+  ansible.builtin.file:
+    path: /etc/apt/sources.list.d/vivaldi.list
+    state: absent
 
-- name: Add Vivaldi Repository
-  ansible.builtin.apt_repository:
-    repo: "deb [arch=amd64] https://repo.vivaldi.com/stable/deb/ stable main"
+- name: Add Vivaldi repo using key from URL
+  ansible.builtin.deb822_repository:
+    name: vivaldi
+    types: [deb]
+    uris: "https://repo.vivaldi.com/stable/deb/"
+    components: [main]
+    suites: [stable]
+    signed_by: https://repo.vivaldi.com/stable/linux_signing_key.pub
     state: present
-    filename: vivaldi
+    enabled: true
 
 - name: Install Vivaldi Stable
   ansible.builtin.apt:
