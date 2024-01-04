@@ -4,6 +4,7 @@
     mime_type: "{{ mimetype }}"
     handler: vivaldi-stable.desktop
   loop: "{{ vivaldi_mimetypes }}"
-  loop_var: mimetype
+  loop_control:
+    loop_var: mimetype
   become: true
   become_user: "{{ item }}"
