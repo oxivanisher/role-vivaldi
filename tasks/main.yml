@@ -20,4 +20,3 @@
 - name: Configure Vivaldi as default application
   include_tasks: set_default_app.yml
   loop: "{{ vivaldi_os_users }}"
-  loop_var: os_user

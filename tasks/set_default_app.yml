@@ -1,8 +1,9 @@
 ---
 - name: Set Vivaldi default application
   community.general.gio_mime:
-    mime_type: "{{ item }}"
+    mime_type: "{{ mimetype }}"
     handler: vivaldi-stable.desktop
   loop: "{{ vivaldi_mimetypes }}"
+  loop_var: mimetype
   become: true
-  become_user: "{{ os_user }}"
+  become_user: "{{ item }}"
