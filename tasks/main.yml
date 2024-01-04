@@ -18,5 +18,5 @@
     state: present
 
 - name: Configure Vivaldi as default application
-  include_tasks: set_default_app.yml
+  ansible.builtin.include_tasks: set_default_app.yml
   loop: "{{ vivaldi_os_users }}"
