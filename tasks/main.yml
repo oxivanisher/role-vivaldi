@@ -17,33 +17,8 @@
     update_cache: true
     state: present
 
-- name: Configure defaults file
-  ansible.builtin.lineinfile:
-    path: /usr/share/applications/mimeapps.list
-    line: "{{ item }}"
-    state: present
-    create: true
-    mode: "0644"
-    owner: root
-    group: root
-  loop:
-    - "[Default Applications]"
-    - "[Added Associations]"
-
 - name: Set Vivaldi default application
-  ansible.builtin.lineinfile:
-    path: /usr/share/applications/mimeapps.list
-    insertbefore: "Added Associations"
-    line: "{{ item }}=vivaldi-stable.desktop"
-    state: present
-    firstmatch: true
-  loop: "{{ vivaldi_mimetypes | sort }}"
-
-- name: Set Vivaldi added associations
-  ansible.builtin.lineinfile:
-    path: /usr/share/applications/mimeapps.list
-    insertafter: "Added Associations"
-    line: "{{ item }}=vivaldi-stable.desktop;"
-    state: present
-    firstmatch: true
-  loop: "{{ vivaldi_mimetypes | sort }}"
+  community.general.gio_mime:
+    mime_type: "{{ item }}"
+    handler: vivaldi-stable.desktop
+  loop: "{{ vivaldi_mimetypes }}"
