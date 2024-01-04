@@ -3,6 +3,14 @@ vivaldi
 
 This role installs the vivaldi browser and sets it as default app for supported mit types.
 
+
+Role Variables
+--------------
+
+| Name          | Comment                              | Default value |
+|---------------|--------------------------------------|---------------|
+| vivaldi_os_users  | Users for which vivaldi will be set the default app for.  | `[]`          |
+
 Example Playbook
 ----------------
 ```yaml

@@ -17,8 +17,15 @@
     update_cache: true
     state: present
 
-- name: Set Vivaldi default application
-  community.general.gio_mime:
-    mime_type: "{{ item }}"
-    handler: vivaldi-stable.desktop
-  loop: "{{ vivaldi_mimetypes }}"
+- name: Configure Vivaldi as default application
+  block:
+    - name: Set Vivaldi default application
+      community.general.gio_mime:
+        mime_type: "{{ item }}"
+        handler: vivaldi-stable.desktop
+      loop: "{{ vivaldi_mimetypes }}"
+      become: true
+      become_user: "{{ os_user }}"
+
+  loop: "{{ vivaldi_os_users }}"
+  loop_var: os_user
