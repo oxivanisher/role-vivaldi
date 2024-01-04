@@ -1,0 +1,8 @@
+---
+- name: Set Vivaldi default application
+  community.general.gio_mime:
+    mime_type: "{{ item }}"
+    handler: vivaldi-stable.desktop
+  loop: "{{ vivaldi_mimetypes }}"
+  become: true
+  become_user: "{{ os_user }}"
