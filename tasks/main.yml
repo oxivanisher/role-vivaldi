@@ -10,12 +10,16 @@
     signed_by: https://repo.vivaldi.com/stable/linux_signing_key.pub
     state: present
     enabled: true
+  become: true
+  become_user: root
 
 - name: Install Vivaldi Stable
   ansible.builtin.apt:
     name: vivaldi-stable
     update_cache: true
     state: present
+  become: true
+  become_user: root
 
 - name: Configure Vivaldi as default application
   ansible.builtin.include_tasks: set_default_app.yml
