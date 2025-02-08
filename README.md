@@ -1,5 +1,6 @@
 vivaldi
 =======
+[![Ansible Lint](https://github.com/oxivanisher/role-vivaldi/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/oxivanisher/role-vivaldi/actions/workflows/ansible-lint.yml)
 
 This role installs the vivaldi browser and sets it as default app for supported mit types.
 
