@@ -13,6 +13,14 @@
   become: true
   become_user: root
 
+# If you end up here by searching some bug or strange behavior concerning repositories, read the readme first please
+- name: Remove old vivaldi.list file
+  ansible.builtin.file:
+    path: /etc/apt/sources.list.d/vivaldi.list
+    state: absent
+  become: true
+  become_user: root
+
 - name: Install Vivaldi Stable
   ansible.builtin.apt:
     name: vivaldi-stable
