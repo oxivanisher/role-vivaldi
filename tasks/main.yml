@@ -1,4 +1,14 @@
 ---
+- name: Set arch for amd64
+  ansible.builtin.set_fact:
+    vivaldy_arch: [amd64]
+  when: ansible_architecture == "x86_64"
+
+- name: Set arch for arm64
+  ansible.builtin.set_fact:
+    vivaldy_arch: [arm64]
+  when: ansible_architecture == "arm64"
+
 - name: Ensure python3-debian is installed
   ansible.builtin.package:
     name: python3-debian
@@ -11,7 +21,7 @@
     name: vivaldi
     types: [deb]
     uris: "https://repo.vivaldi.com/stable/deb/"
-    architectures: [amd64]
+    architectures: "{{ vivaldi_arch }}"
     components: [main]
     suites: [stable]
     signed_by: https://repo.vivaldi.com/stable/linux_signing_key.pub
