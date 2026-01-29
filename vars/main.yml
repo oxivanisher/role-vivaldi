@@ -5,3 +5,4 @@ vivaldi_mimetypes:
   - x-scheme-handler/https
   - x-scheme-handler/about
   - x-scheme-handler/unknown
+vivaldi_base_url: https://repo.vivaldi.com/archive
