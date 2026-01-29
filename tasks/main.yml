@@ -20,11 +20,11 @@
   ansible.builtin.deb822_repository:
     name: vivaldi
     types: [deb]
-    uris: "{{ vivaldi_base_url }}/deb/"
+    uris: "{{ vivaldi_repo_url }}"
     architectures: "{{ vivaldi_arch }}"
     components: [main]
     suites: [stable]
-    signed_by: "{{ vivaldi_base_url }}/linux_signing_key.pub"
+    signed_by: "{{ vivaldi_key_url }}"
     state: present
     enabled: true
   become: true
