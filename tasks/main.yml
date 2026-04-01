@@ -14,7 +14,6 @@
     name: python3-debian
     state: present
   become: true
-  become_user: root
 
 - name: Add Vivaldi repo using key from URL
   ansible.builtin.deb822_repository:
@@ -28,7 +27,6 @@
     state: present
     enabled: true
   become: true
-  become_user: root
 
 # If you end up here by searching some bug or strange behavior concerning repositories, read the readme first please
 - name: Remove old vivaldi.list file
@@ -36,7 +34,6 @@
     path: /etc/apt/sources.list.d/vivaldi.list
     state: absent
   become: true
-  become_user: root
 
 - name: Install Vivaldi Stable
   ansible.builtin.apt:
@@ -45,7 +42,6 @@
     state: present
   ignore_errors: "{{ ansible_check_mode }}"
   become: true
-  become_user: root
 
 - name: Configure Vivaldi as default application
   ansible.builtin.include_tasks: set_default_app.yml
