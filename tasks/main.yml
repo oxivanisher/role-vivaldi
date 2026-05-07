@@ -15,7 +15,14 @@
     state: present
   become: true
 
-- name: Add Vivaldi repo using key from URL
+- name: Download Vivaldi GPG key
+  ansible.builtin.get_url:
+    url: "{{ vivaldi_key_url }}"
+    dest: /etc/apt/keyrings/vivaldi.asc
+    mode: '0644'
+  become: true
+
+- name: Add Vivaldi apt repository
   ansible.builtin.deb822_repository:
     name: vivaldi
     types: [deb]
@@ -23,7 +30,7 @@
     architectures: "{{ vivaldi_arch }}"
     components: [main]
     suites: [stable]
-    signed_by: "{{ vivaldi_key_url }}"
+    signed_by: /etc/apt/keyrings/vivaldi.asc
     state: present
     enabled: true
   become: true
